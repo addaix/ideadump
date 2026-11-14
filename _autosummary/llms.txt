@@ -1,0 +1,17 @@
+# ideadump
+
+> A place to dump ideas: capture them in your own words, research them a little, index and relate them, and find them again
+
+
+## Pages in this subsection
+
+- [ideadump](ideadump.html.md): ideadump: a place to dump ideas, research them a little, and find them again.
+- [ideadump.base](ideadump.base.html.md): Errors and constants shared across ideadump.
+- [ideadump.render](ideadump.render.html.md): Markdown views of the records: one &#96;README.md&#96; per idea and an index at the root.
+- [ideadump.search](ideadump.search.html.md): Rank ideas against a query: BM25 over words, standard library only.
+- [ideadump.store](ideadump.store.html.md): Where ideas live: a &#96;MutableMapping&#96; of &#96;/&#96;-separated path to text.
+- [ideadump.tools](ideadump.tools.html.md): The verbs: plain functions, JSON-able arguments in, JSON-able dicts out.
+
+## Optional
+
+- [Top-level llms.txt](../llms.txt): Complete documentation index.

@@ -1,0 +1,15 @@
+ideadump.render
+===============
+
+.. automodule:: ideadump.render
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      idea_page
+      index_page
+      research_depth
+      created_at
+   

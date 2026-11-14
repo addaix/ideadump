@@ -1,0 +1,42 @@
+﻿ideadump
+========
+
+.. automodule:: ideadump
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      add
+      data_dir
+      find
+      link
+      ls
+      note
+      reindex
+      show
+      sync
+      sync_init
+      sync_status
+      text_files
+      update
+      where
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      IdeadumpError
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   base
+   render
+   search
+   store
+   tools

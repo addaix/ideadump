@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "built_at": "2026-11-14T21:51:33Z",
+  "package": {
+    "name": "ideadump",
+    "version": "0.0.1",
+    "display_name": "ideadump",
+    "source": "pyproject.toml"
+  },
+  "git": {
+    "available": true,
+    "commit": "f64944f128858fc3fee157acf5fb1a426834cccc",
+    "short_commit": "f64944f",
+    "branch": "main",
+    "tags": [],
+    "dirty": false,
+    "remote_url": "https://github.com/thorwhalen/ideadump",
+    "commit_url": "https://github.com/thorwhalen/ideadump/commit/f64944f128858fc3fee157acf5fb1a426834cccc",
+    "error": null
+  },
+  "ci": {
+    "provider": "github",
+    "repository": "thorwhalen/ideadump",
+    "sha": "f64944f128858fc3fee157acf5fb1a426834cccc",
+    "sha_in_history": true,
+    "ref": "refs/heads/main",
+    "ref_name": "main",
+    "run_id": "43644894015",
+    "run_url": "https://github.com/thorwhalen/ideadump/actions/runs/43644894015",
+    "server_url": "https://github.com"
+  },
+  "tools": {
+    "epythet": "0.2.22",
+    "sphinx": "9.1.1",
+    "docutils": "0.22.4",
+    "python": "3.12.16"
+  },
+  "config": {
+    "theme": "auto",
+    "html_theme": "shibuya",
+    "accent": "#006d45",
+    "mode": "auto",
+    "api_generator": "autosummary",
+    "ignore": [
+      "tests/",
+      "scrap/",
+      "examples/"
+    ],
+    "agent_outputs": true,
+    "aggregates": [
+      "md"
+    ],
+    "ai_artifacts": true,
+    "provenance": true,
+    "docs_dir": "docsrc"
+  },
+  "site": {
+    "modules_documented": 6,
+    "objects_documented": 40
+  },
+  "pypi": {
+    "checked": true,
+    "latest": "0.0.2",
+    "relation": "behind",
+    "error": null
+  },
+  "reproduce": "git clone https://github.com/thorwhalen/ideadump && cd ideadump\ngit checkout f64944f128858fc3fee157acf5fb1a426834cccc\npip install \"epythet==0.2.22\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "warnings": [],
+  "alignment": {
+    "aligned": false,
+    "notes": [
+      "The documented version (0.0.1) is behind the latest release on PyPI (0.0.2): `pip install ideadump` gives newer code than these docs describe."
+    ]
+  }
+}

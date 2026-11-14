@@ -1,0 +1,21 @@
+ideadump.tools
+==============
+
+.. automodule:: ideadump.tools
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      add
+      show
+      update
+      note
+      link
+      ls
+      find
+      reindex
+      where
+      without
+   

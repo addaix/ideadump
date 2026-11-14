@@ -1,0 +1,14 @@
+ideadump.search
+===============
+
+.. automodule:: ideadump.search
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      tokens
+      bm25
+      rank
+   

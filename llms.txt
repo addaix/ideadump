@@ -1,0 +1,25 @@
+# ideadump
+
+> A place to dump ideas: capture them in your own words, research them a little, index and relate them, and find them again
+
+
+## Pages
+
+- [ideadump](index.html.md): A place to dump ideas: capture them in your own words, research them a little, index and relate them...
+- [API reference](api.html.md): | &#96;ideadump&#96;   | ideadump: a place to dump ideas, research them a little, and find them again.   |
+- [ideadump](_autosummary/ideadump.html.md): ideadump: a place to dump ideas, research them a little, and find them again.
+- [ideadump.base](_autosummary/ideadump.base.html.md): Errors and constants shared across ideadump.
+- [ideadump.render](_autosummary/ideadump.render.html.md): Markdown views of the records: one &#96;README.md&#96; per idea and an index at the root.
+- [ideadump.search](_autosummary/ideadump.search.html.md): Rank ideas against a query: BM25 over words, standard library only.
+- [ideadump.store](_autosummary/ideadump.store.html.md): Where ideas live: a &#96;MutableMapping&#96; of &#96;/&#96;-separated path to text.
+- [ideadump.tools](_autosummary/ideadump.tools.html.md): The verbs: plain functions, JSON-able arguments in, JSON-able dicts out.
+- [For AI agents](ai-agents.html.md): &#96;ideadump&#96; ships artifacts for coding agents alongside its code. This page lists
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-14 21:51 UTC&#42;&#42; from commit &lt;a href="https://github.com/tho...
+
+## Optional
+
+- [ideadump.md](ideadump.md): Complete documentation in a single file.
+
+## Build
+
+- [build_info.json](build_info.json): build provenance (commit, version, tool versions, whether the docs match the package)

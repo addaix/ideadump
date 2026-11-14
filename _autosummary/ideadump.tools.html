@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="jade" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ideadump.tools - ideadump</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="For AI agents" href="../ai-agents.html" /><link rel="prev" title="ideadump.store" href="ideadump.store.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_autodoc_typehints.css?v=057ac668" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="ideadump.tools"/>
+    <meta name="twitter:card" content="summary"/>
+  
+<link rel="alternate" type="text/markdown" href="ideadump.tools.html.md">
+<link rel="describedby" href="../llms.txt" type="text/markdown">
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      
+      
+      <strong>ideadump</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/thorwhalen/ideadump" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ideadump.html">ideadump</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ideadump.base.html">ideadump.base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ideadump.render.html">ideadump.render</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ideadump.search.html">ideadump.search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ideadump.store.html">ideadump.store</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ideadump.tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ai-agents.html">For AI agents</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#ideadump.tools.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li><a class="reference internal" href="#ideadump.tools.find"><code class="docutils literal notranslate"><span class="pre">find()</span></code></a></li>
+<li><a class="reference internal" href="#ideadump.tools.link"><code class="docutils literal notranslate"><span class="pre">link()</span></code></a></li>
+<li><a class="reference internal" href="#ideadump.tools.ls"><code class="docutils literal notranslate"><span class="pre">ls()</span></code></a></li>
+<li><a class="reference internal" href="#ideadump.tools.note"><code class="docutils literal notranslate"><span class="pre">note()</span></code></a></li>
+<li><a class="reference internal" href="#ideadump.tools.reindex"><code class="docutils literal notranslate"><span class="pre">reindex()</span></code></a></li>
+<li><a class="reference internal" href="#ideadump.tools.show"><code class="docutils literal notranslate"><span class="pre">show()</span></code></a></li>
+<li><a class="reference internal" href="#ideadump.tools.update"><code class="docutils literal notranslate"><span class="pre">update()</span></code></a></li>
+<li><a class="reference internal" href="#ideadump.tools.where"><code class="docutils literal notranslate"><span class="pre">where()</span></code></a></li>
+<li><a class="reference internal" href="#ideadump.tools.without"><code class="docutils literal notranslate"><span class="pre">without()</span></code></a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">ideadump</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../api.html"><span itemprop="name">API reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="ideadump.html"><span itemprop="name">ideadump</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">ideadump.tools</strong>
+        <meta itemprop="position" content="4" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue dark-code" role="main">
+          <section id="module-ideadump.tools">
+<span id="ideadump-tools"></span><h1>ideadump.tools<a class="headerlink" href="#module-ideadump.tools" title="Link to this heading">#</a></h1>
+<p>The verbs: plain functions, JSON-able arguments in, JSON-able dicts out.</p>
+<p>This module is the single source of truth for what ideadump does; the command line
+(<code class="docutils literal notranslate"><span class="pre">ideadump.__main__</span></code>) and the shipped agent skill are views of the list
+<code class="xref py py-data docutils literal notranslate"><span class="pre">TOOLS</span></code>. Every verb takes a <code class="docutils literal notranslate"><span class="pre">files</span></code> store (see <a class="reference internal" href="ideadump.store.html#module-ideadump.store" title="ideadump.store"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ideadump.store</span></code></a>), so</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="s2">"Maybe a tool to dump ideas into, with a bit of research"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Idea dump"</span><span class="p">,</span>
+</span><span data-line="3"><span class="gp">... </span>        <span class="n">tags</span><span class="o">=</span><span class="s2">"tools, notes"</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span> <span class="n">now</span><span class="o">=</span><span class="s2">"2026-11-14T10:00:00+01:00"</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+</span><span data-line="5"><span class="go">'2026-11-14-idea-dump'</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+</span><span data-line="7"><span class="go">['README.md', 'ideas/2026-11-14-idea-dump/README.md', 'ideas/2026-11-14-idea-dump/idea.json']</span>
+</span><span data-line="8"><span class="gp">&gt;&gt;&gt; </span><span class="n">find</span><span class="p">(</span><span class="s2">"research tool for ideas"</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)[</span><span class="s2">"hits"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"id"</span><span class="p">]</span>
+</span><span data-line="9"><span class="go">'2026-11-14-idea-dump'</span>
+</span></pre></div>
+</div>
+<p>Verbs never print and never exit; each result carries a <code class="docutils literal notranslate"><span class="pre">text</span></code> field, the human
+rendering, which the command line prints.</p>
+<p class="rubric">Functions</p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ideadump.tools.add" title="ideadump.tools.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(words, *[, title, summary, tags, ...])</p></td>
+<td><p>Capture an idea: the owner's words verbatim, plus an optional title, summary and tags.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ideadump.tools.show" title="ideadump.tools.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a>(idea, *[, files, data_dir])</p></td>
+<td><p>One idea: its record, and the text of its page (words, summary, research, links).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ideadump.tools.update" title="ideadump.tools.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(idea, *[, title, summary, tags, ...])</p></td>
+<td><p>Change an idea's title, summary, status, or tags (<code class="docutils literal notranslate"><span class="pre">tags</span></code> replaces, <code class="docutils literal notranslate"><span class="pre">add_tags</span></code> adds).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ideadump.tools.note" title="ideadump.tools.note"><code class="xref py py-obj docutils literal notranslate"><span class="pre">note</span></code></a>(idea, *[, text, file, depth, title, ...])</p></td>
+<td><p>Attach a research note (Markdown) to an idea, from <code class="docutils literal notranslate"><span class="pre">text</span></code> or a <code class="docutils literal notranslate"><span class="pre">file</span></code> path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ideadump.tools.link" title="ideadump.tools.link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">link</span></code></a>(idea, other, *[, why, files, data_dir, now])</p></td>
+<td><p>Relate two ideas, both ways, with an optional one-line reason.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ideadump.tools.ls" title="ideadump.tools.ls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls</span></code></a>(*[, tag, status, limit, files, data_dir])</p></td>
+<td><p>The ideas, newest first, optionally only those with a tag or a status.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ideadump.tools.find" title="ideadump.tools.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a>([query, file, limit, files, data_dir, ...])</p></td>
+<td><p>Ideas related to a query, best first: a few words, or a page of text in <code class="docutils literal notranslate"><span class="pre">file</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ideadump.tools.reindex" title="ideadump.tools.reindex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reindex</span></code></a>(*[, files, data_dir])</p></td>
+<td><p>Regenerate every idea page and the root index from the records.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ideadump.tools.where" title="ideadump.tools.where"><code class="xref py py-obj docutils literal notranslate"><span class="pre">where</span></code></a>(*[, data_dir])</p></td>
+<td><p>Where the ideas are stored, and whether that folder is synced to a git repository.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ideadump.tools.without" title="ideadump.tools.without"><code class="xref py py-obj docutils literal notranslate"><span class="pre">without</span></code></a>(func[, hidden])</p></td>
+<td><p>The same verb with <code class="docutils literal notranslate"><span class="pre">hidden</span></code> parameters removed from its signature (for the CLI).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="ideadump.tools.add">
+<span class="sig-prename descclassname"><span class="pre">ideadump.tools.</span></span><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">words</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'new'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">now</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ideadump/tools.html#add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ideadump.tools.add" title="Link to this definition">#</a></dt>
+<dd><p>Capture an idea: the owner’s words verbatim, plus an optional title, summary and tags.</p>
+<p><code class="docutils literal notranslate"><span class="pre">words</span></code> is kept exactly as given (dictation slips included); put the cleaned-up
+reading in <code class="docutils literal notranslate"><span class="pre">summary</span></code>. <code class="docutils literal notranslate"><span class="pre">tags</span></code> is comma-separated. <code class="docutils literal notranslate"><span class="pre">source</span></code> says where it was
+captured (a session name, “phone”). Returns the new id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ideadump.tools.find">
+<span class="sig-prename descclassname"><span class="pre">ideadump.tools.</span></span><span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ideadump/tools.html#find"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ideadump.tools.find" title="Link to this definition">#</a></dt>
+<dd><p>Ideas related to a query, best first: a few words, or a page of text in <code class="docutils literal notranslate"><span class="pre">file</span></code>.</p>
+<p>For “is anything I’ve been working on related to my ideas?”, put a description of
+recent work (ledgers, issue titles, commit subjects) in a file and pass <code class="docutils literal notranslate"><span class="pre">--file</span></code>.
+Each hit lists the words it shares with the query, so a weak match is visible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ideadump.tools.link">
+<span class="sig-prename descclassname"><span class="pre">ideadump.tools.</span></span><span class="sig-name descname"><span class="pre">link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idea</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">why</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">now</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ideadump/tools.html#link"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ideadump.tools.link" title="Link to this definition">#</a></dt>
+<dd><p>Relate two ideas, both ways, with an optional one-line reason.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ideadump.tools.ls">
+<span class="sig-prename descclassname"><span class="pre">ideadump.tools.</span></span><span class="sig-name descname"><span class="pre">ls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ideadump/tools.html#ls"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ideadump.tools.ls" title="Link to this definition">#</a></dt>
+<dd><p>The ideas, newest first, optionally only those with a tag or a status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ideadump.tools.note">
+<span class="sig-prename descclassname"><span class="pre">ideadump.tools.</span></span><span class="sig-name descname"><span class="pre">note</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idea</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'light'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">now</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ideadump/tools.html#note"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ideadump.tools.note" title="Link to this definition">#</a></dt>
+<dd><p>Attach a research note (Markdown) to an idea, from <code class="docutils literal notranslate"><span class="pre">text</span></code> or a <code class="docutils literal notranslate"><span class="pre">file</span></code> path.</p>
+<p><code class="docutils literal notranslate"><span class="pre">depth</span></code> is <code class="docutils literal notranslate"><span class="pre">light</span></code> (the quick pass at capture) or <code class="docutils literal notranslate"><span class="pre">deep</span></code> (a full report).
+Notes are never overwritten: a second note the same day gets its own file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ideadump.tools.reindex">
+<span class="sig-prename descclassname"><span class="pre">ideadump.tools.</span></span><span class="sig-name descname"><span class="pre">reindex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ideadump/tools.html#reindex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ideadump.tools.reindex" title="Link to this definition">#</a></dt>
+<dd><p>Regenerate every idea page and the root index from the records.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ideadump.tools.show">
+<span class="sig-prename descclassname"><span class="pre">ideadump.tools.</span></span><span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idea</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ideadump/tools.html#show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ideadump.tools.show" title="Link to this definition">#</a></dt>
+<dd><p>One idea: its record, and the text of its page (words, summary, research, links).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ideadump.tools.update">
+<span class="sig-prename descclassname"><span class="pre">ideadump.tools.</span></span><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idea</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">now</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ideadump/tools.html#update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ideadump.tools.update" title="Link to this definition">#</a></dt>
+<dd><p>Change an idea’s title, summary, status, or tags (<code class="docutils literal notranslate"><span class="pre">tags</span></code> replaces, <code class="docutils literal notranslate"><span class="pre">add_tags</span></code> adds).</p>
+<p>The owner’s words are never edited; the id never changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ideadump.tools.where">
+<span class="sig-prename descclassname"><span class="pre">ideadump.tools.</span></span><span class="sig-name descname"><span class="pre">where</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ideadump/tools.html#where"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ideadump.tools.where" title="Link to this definition">#</a></dt>
+<dd><p>Where the ideas are stored, and whether that folder is synced to a git repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ideadump.tools.without">
+<span class="sig-prename descclassname"><span class="pre">ideadump.tools.</span></span><span class="sig-name descname"><span class="pre">without</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('files',</span> <span class="pre">'data_dir',</span> <span class="pre">'now')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ideadump/tools.html#without"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ideadump.tools.without" title="Link to this definition">#</a></dt>
+<dd><p>The same verb with <code class="docutils literal notranslate"><span class="pre">hidden</span></code> parameters removed from its signature (for the CLI).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="s2">"files"</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">without</span><span class="p">(</span><span class="n">show</span><span class="p">))</span><span class="o">.</span><span class="n">parameters</span>
+</span><span data-line="2"><span class="go">False</span>
+</span></pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callable</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="ideadump.store.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">ideadump.store</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../ai-agents.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">For AI agents</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright">
+  <p>
+    Made with
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/thorwhalen/ideadump" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=fd10adb8"></script>
+      <script src="../_static/shibuya.js?v=50760d75"></script></body>
+</html>

@@ -1,0 +1,25 @@
+ideadump.base
+=============
+
+.. automodule:: ideadump.base
+
+   
+   .. rubric:: Module Attributes
+
+   .. autosummary::
+   
+      STATUSES
+      DEPTHS
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      record_key
+   
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      IdeadumpError
+   

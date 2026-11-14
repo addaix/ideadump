@@ -1,0 +1,15 @@
+ideadump.store
+==============
+
+.. automodule:: ideadump.store
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      data_dir
+      text_files
+      resolve_files
+      writing
+   
