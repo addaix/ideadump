@@ -1,0 +1,72 @@
+# ideadump
+
+A place to dump ideas: capture them in your own words, research them a little, index and relate them, and find them again.
+
+```bash
+pip install ideadump
+```
+
+You tell an agent an idea in passing; it runs one command to keep it, verbatim, and a light research pass to see what it is called, what already exists and whether it is promising. Later you ask what ideas you have about something, or whether anything you have been working on relates to them.
+
+```bash
+ideadump add "a place to dump ideas, and do a bit of research on them" --title "Idea dump" --tags "tools, notes" --source my-session
+ideadump note idea-dump --file light-research.md --depth light     # attach research notes
+ideadump find "note taking research"                                # ranked, with the shared words
+ideadump find --file recent-work.md                                 # which ideas relate to this page of recent work?
+ideadump ls --status promising
+ideadump show idea-dump
+```
+
+Research is done by the agent with whatever search tools it has, so it sends queries (generic terms, not your notes) to outside services; the ideas themselves stay in your store.
+
+The primary user is an agent: the package ships a skill, `ideadump`, that tells it when and how to use these verbs (capture, light and deep research, linking, the "is my recent work related to my ideas" pass). See [Agent skill](#agent-skill).
+
+## Where ideas live
+
+Ideas are kept in a [dol](https://github.com/i2mint/dol) store, a `MutableMapping` of path to text. By default it is a local folder, `~/.local/share/ideadump` (or `$IDEADUMP_DATA_DIR`). Each idea is a folder:
+
+```
+README.md                         # the index: newest first, then by tag (generated)
+ideas/2026-11-14-idea-dump/
+    idea.json                     # the record: words (verbatim), title, summary, tags, status, research, links
+    README.md                     # the idea's page (generated)
+    research/2026-11-14-light.md  # research notes, never overwritten
+```
+
+The pages are generated from the records on every write, so the folder reads well in a file browser or on GitHub.
+
+### Syncing to a private git repository
+
+```bash
+pip install 'ideadump[git]'
+ideadump sync-init you/my-ideas     # creates the repository PRIVATE if missing, and makes the data folder its checkout
+ideadump sync                              # pull, commit everything, push
+ideadump sync-status
+```
+
+The git work is [acquaint](https://github.com/thorwhalen/acquaint)'s guarded sync: it refuses a repository that is not private, and a pre-push hook re-checks the remote and its visibility on every push. `sync-init` adopts an existing ideas folder (and refuses one that is a checkout of another repository); on a second machine, clone the repository into the data folder first. Generated pages are marked in `.gitattributes` so they never conflict: `sync` rebuilds them from the merged records after each rebase. A private repository is access control, not encryption.
+
+## Python
+
+Every verb is a plain function returning a JSON-able dict, and takes the store as `files`, so any `MutableMapping` works (a `dict` in tests, another `dol` store elsewhere):
+
+```python
+from ideadump import add, find, note
+
+files = {}
+r = add("offline speech to text on the phone", tags="audio", files=files)
+note(r["id"], text="# Prior art\n\nWhisper.cpp, Vosk.", files=files)
+find("speech recognition", files=files)["hits"]
+```
+
+`find` ranks with BM25 (standard library); pass `score=` to plug in another scorer, such as a semantic one.
+
+## Agent skill
+
+The skill lives in the package at `ideadump/data/skills/ideadump/SKILL.md`. For Claude Code, with the package installed, link it into your skills folder:
+
+```bash
+ln -s "$(python -c 'import ideadump, pathlib; print(pathlib.Path(ideadump.__file__).parent / "data/skills/ideadump")')" ~/.claude/skills/ideadump
+```
+
+Then tell any session "idea for later: ..." and it captures it. Other agent hosts read the same file; point yours at that folder (with the `gh skill` extension, `gh skill install thorwhalen/ideadump ideadump`).
