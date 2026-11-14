@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ideadump"
-version = "0.0.1"
+version = "0.0.2"
 description = "A place to dump ideas: capture them in your own words, research them a little, index and relate them, and find them again"
 readme = "README.md"
 requires-python = ">=3.10"
