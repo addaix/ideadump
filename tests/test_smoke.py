@@ -149,3 +149,13 @@ def test_titles_escaped_and_order_across_time_zones():
     add("y", title="Later", files=files, now="2026-11-14T22:45:00+00:00")
     assert [r["title"] for r in ls(files=files)["ideas"]] == ["Later", "A | B [c]"]
     assert "A \\| B \\[c\\]" in files["README.md"]
+
+
+def test_refuses_data_folder_inside_another_work_tree(tmp_path, monkeypatch):
+    (tmp_path / ".git").mkdir()
+    data = tmp_path / "sub" / "ideas"
+    monkeypatch.delenv("IDEADUMP_ALLOW_INSIDE_WORK_TREE", raising=False)
+    with pytest.raises(IdeadumpError, match="inside the git work tree"):
+        add("an idea", data_dir=data)
+    monkeypatch.setenv("IDEADUMP_ALLOW_INSIDE_WORK_TREE", "1")
+    assert add("an idea", data_dir=data)["id"]

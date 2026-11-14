@@ -17,6 +17,8 @@ ideadump ls --status promising
 ideadump show idea-dump
 ```
 
+Research is done by the agent with whatever search tools it has, so it sends queries (generic terms, not your notes) to outside services; the ideas themselves stay in your store.
+
 The primary user is an agent: the package ships a skill, `ideadump`, that tells it when and how to use these verbs (capture, light and deep research, linking, the "is my recent work related to my ideas" pass). See [Agent skill](#agent-skill).
 
 ## Where ideas live

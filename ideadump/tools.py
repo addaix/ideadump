@@ -42,7 +42,7 @@ from ideadump.base import (
 from ideadump.render import created_at, idea_page, index_page, research_depth
 from ideadump.search import rank
 from ideadump.store import data_dir as _data_dir
-from ideadump.store import resolve_files, writing
+from ideadump.store import enclosing_work_tree, resolve_files, writing
 from ideadump.sync import sync, sync_init, sync_status
 
 __all__ = [
@@ -451,13 +451,13 @@ def where(*, data_dir: Any = None) -> dict:
     """Where the ideas are stored, and whether that folder is synced to a git repository."""
     root = _data_dir(data_dir)
     synced = (root / ".git").exists()
-    enclosing = next((p for p in root.parents if (p / ".git").exists()), None)
+    enclosing = enclosing_work_tree(root)
     if synced:
         state = "  (git checkout: `ideadump sync` pushes)"
     elif enclosing:
         state = (
-            f"  (WARNING: inside the git work tree {enclosing}; a commit there would "
-            "include the ideas. Point $IDEADUMP_DATA_DIR elsewhere unless that repository is private)"
+            f"  (inside the git work tree {enclosing}: writes are refused unless "
+            "$IDEADUMP_ALLOW_INSIDE_WORK_TREE=1; point $IDEADUMP_DATA_DIR elsewhere)"
         )
     else:
         state = "  (local only)"

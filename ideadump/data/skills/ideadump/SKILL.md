@@ -30,6 +30,8 @@ ideadump add "<the owner's words, verbatim>" --title "<short title>" --summary "
 
 ## Light research (at capture, a few minutes)
 
+Search with the field's generic terms, not the owner's sentences: their words stay in the store, and outside search services see only queries.
+
 Answer four questions, with sources, in a short Markdown note:
 
 1. **What is this called?** The standard name for the idea or its field, if there is one.
@@ -49,7 +51,7 @@ Write the note in a temporary folder, not in the current project.
 
 ## Deep research (on request, or when the owner agrees an idea is promising)
 
-Load the `do-research` skill and run it on the idea at deep depth (its report shape, its Vancouver references). Store the report with `ideadump note <id> --file <report.md> --depth deep`, then `ideadump sync`. If the owner reads on a phone and the host has a publishing tool for that (in their fleet, `annals publish`), publish the report and give them the link.
+Load the `do-research` skill and run it on the idea at deep depth (its report shape, its Vancouver references). Store the report with `ideadump note <id> --file <report.md> --depth deep`, then `ideadump sync`. The report is as private as the idea. If the owner reads on a phone, give them a link only to a destination that is private and access-controlled (in their fleet, `annals publish`, whose links are private; or the idea's page in the private data repository). Never publish it anywhere public.
 
 ## Finding ideas
 
@@ -75,5 +77,5 @@ The data folder is browsable as it is: `README.md` at its root is the index (new
 ## Never
 
 - Never edit `words`; never delete an idea or a note the owner did not ask you to delete.
-- Never put idea text in the current project, an issue, or anywhere public. If `ideadump where` warns that the data folder is inside another git work tree, tell the owner before capturing.
+- Never put idea text in the current project, an issue, or anywhere public. If ideadump refuses because the data folder is inside another git work tree, tell the owner; never set `IDEADUMP_ALLOW_INSIDE_WORK_TREE` yourself.
 - Never run deep research unasked on every idea: a light look at capture, deeper only on request or agreement.

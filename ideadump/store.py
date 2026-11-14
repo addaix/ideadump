@@ -81,6 +81,26 @@ _LOCK_STALE = 120.0  # a lock older than this was left by a crashed process
 _LOCK_POLL = 0.05
 
 
+ALLOW_WORK_TREE_ENVVAR = "IDEADUMP_ALLOW_INSIDE_WORK_TREE"
+
+
+def enclosing_work_tree(root: Path) -> Path | None:
+    """The git work tree ``root`` sits inside, when it is not a checkout of its own."""
+    if (root / ".git").exists():
+        return None
+    return next((p for p in root.parents if (p / ".git").exists()), None)
+
+
+def _refuse_foreign_work_tree(root: Path) -> None:
+    enclosing = enclosing_work_tree(root)
+    if enclosing and not os.environ.get(ALLOW_WORK_TREE_ENVVAR):
+        raise IdeadumpError(
+            f"the data folder {root} is inside the git work tree {enclosing}, so a commit "
+            "there would carry the ideas. Point $IDEADUMP_DATA_DIR elsewhere, or, if that "
+            f"repository is private and meant for them, set ${ALLOW_WORK_TREE_ENVVAR}=1"
+        )
+
+
 @contextmanager
 def writing(
     files: MutableMapping[str, str] | None = None,
@@ -100,6 +120,7 @@ def writing(
         yield files
         return
     root = data_dir(data_dir_)
+    _refuse_foreign_work_tree(root)
     root.mkdir(parents=True, exist_ok=True)
     lock = root / _LOCK_FILE
     deadline = time.monotonic() + timeout
