@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-21T15:47:11Z",
+  "built_at": "2026-11-21T17:53:50Z",
   "package": {
     "name": "ideadump",
     "version": "0.0.2",
@@ -9,28 +9,28 @@
   },
   "git": {
     "available": true,
-    "commit": "2d1a3e7ea50bc1aac8e0f441e35794c26cda02af",
-    "short_commit": "2d1a3e7",
+    "commit": "f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3",
+    "short_commit": "f3e053f",
     "branch": "main",
     "tags": [],
     "dirty": false,
     "remote_url": "https://github.com/addaix/ideadump",
-    "commit_url": "https://github.com/addaix/ideadump/commit/2d1a3e7ea50bc1aac8e0f441e35794c26cda02af",
+    "commit_url": "https://github.com/addaix/ideadump/commit/f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "addaix/ideadump",
-    "sha": "2d1a3e7ea50bc1aac8e0f441e35794c26cda02af",
+    "sha": "f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3",
     "sha_in_history": true,
     "ref": "refs/heads/main",
     "ref_name": "main",
-    "run_id": "44920912399",
-    "run_url": "https://github.com/addaix/ideadump/actions/runs/44920912399",
+    "run_id": "44932402778",
+    "run_url": "https://github.com/addaix/ideadump/actions/runs/44932402778",
     "server_url": "https://github.com"
   },
   "tools": {
-    "epythet": "0.2.22",
+    "epythet": "0.2.23",
     "sphinx": "9.1.1",
     "docutils": "0.22.4",
     "python": "3.12.16"
@@ -60,14 +60,16 @@
   },
   "pypi": {
     "checked": true,
-    "latest": "0.0.2",
-    "relation": "same",
+    "latest": "0.0.3",
+    "relation": "behind",
     "error": null
   },
-  "reproduce": "git clone https://github.com/addaix/ideadump && cd ideadump\ngit checkout 2d1a3e7ea50bc1aac8e0f441e35794c26cda02af\npip install \"epythet==0.2.22\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/addaix/ideadump && cd ideadump\ngit checkout f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
-    "aligned": true,
-    "notes": []
+    "aligned": false,
+    "notes": [
+      "The documented version (0.0.2) is behind the latest release on PyPI (0.0.3): `pip install ideadump` gives newer code than these docs describe."
+    ]
   }
 }

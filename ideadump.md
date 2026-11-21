@@ -1,4 +1,4 @@
-> built 2026-11-21 15:47 UTC from 2d1a3e7 (main) · ideadump 0.0.2. Details: build_info.json
+> built 2026-11-21 17:53 UTC from f3e053f (main) · ideadump 0.0.2. Details: build_info.json
 
 # index.html.md
 
@@ -636,16 +636,18 @@ False
 
 # About this build
 
-This documentation was built on **2026-11-21 15:47 UTC** from commit <a href="https://github.com/addaix/ideadump/commit/2d1a3e7ea50bc1aac8e0f441e35794c26cda02af"><code>2d1a3e7</code></a> on branch <code>main</code>, for **ideadump 0.0.2** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-21 17:53 UTC** from commit <a href="https://github.com/addaix/ideadump/commit/f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3"><code>f3e053f</code></a> on branch <code>main</code>, for **ideadump 0.0.2** (from <code>pyproject.toml</code>).
 
-#### NOTE
-Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
+#### WARNING
+The documentation and the package may be misaligned:
+
+- The documented version (0.0.2) is behind the latest release on PyPI (0.0.3): `pip install ideadump` gives newer code than these docs describe.
 
 ## Source
 
 |                     |                                                                                                                                                        |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/addaix/ideadump/commit/2d1a3e7ea50bc1aac8e0f441e35794c26cda02af"><code>2d1a3e7ea50bc1aac8e0f441e35794c26cda02af</code></a> |
+| Commit              | <a href="https://github.com/addaix/ideadump/commit/f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3"><code>f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3</code></a> |
 | Branch              | <code>main</code>                                                                                                                                      |
 | Tags at this commit | none                                                                                                                                                   |
 | Working tree        | clean                                                                                                                                                  |
@@ -656,15 +658,15 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>addaix/ideadump</code>                                                               |
-| Run          | <a href="https://github.com/addaix/ideadump/actions/runs/44920912399">44920912399</a>      |
+| Run          | <a href="https://github.com/addaix/ideadump/actions/runs/44932402778">44932402778</a>      |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>2d1a3e7ea50bc1aac8e0f441e35794c26cda02af</code> (in the history of the built commit) |
+| Event commit | <code>f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3</code> (in the history of the built commit) |
 
 ## Tools
 
 |          |         |
 |----------|---------|
-| epythet  | 0.2.22  |
+| epythet  | 0.2.23  |
 | Sphinx   | 9.1.1   |
 | docutils | 0.22.4  |
 | Python   | 3.12.16 |
@@ -683,14 +685,14 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/ideadump/0.0.2/">0.0.2</a>, the same as the documented version.
+Latest release: <a href="https://pypi.org/project/ideadump/0.0.3/">0.0.3</a>, newer than the documented version (0.0.2).
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/addaix/ideadump && cd ideadump
-git checkout 2d1a3e7ea50bc1aac8e0f441e35794c26cda02af
-pip install "epythet==0.2.22"
+git checkout f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3
+pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
 
