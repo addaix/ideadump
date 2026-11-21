@@ -28,9 +28,9 @@ dependencies = [
 ideadump = "ideadump.__main__:main"
 
 [project.urls]
-Homepage = "https://github.com/thorwhalen/ideadump"
-Repository = "https://github.com/thorwhalen/ideadump"
-Documentation = "https://thorwhalen.github.io/ideadump"
+Homepage = "https://github.com/addaix/ideadump"
+Repository = "https://github.com/addaix/ideadump"
+Documentation = "https://addaix.github.io/ideadump"
 
 [project.optional-dependencies]
 git = [
