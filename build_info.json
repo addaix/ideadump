@@ -1,32 +1,32 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-14T21:51:33Z",
+  "built_at": "2026-11-21T15:47:11Z",
   "package": {
     "name": "ideadump",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "display_name": "ideadump",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "f64944f128858fc3fee157acf5fb1a426834cccc",
-    "short_commit": "f64944f",
+    "commit": "2d1a3e7ea50bc1aac8e0f441e35794c26cda02af",
+    "short_commit": "2d1a3e7",
     "branch": "main",
     "tags": [],
     "dirty": false,
-    "remote_url": "https://github.com/thorwhalen/ideadump",
-    "commit_url": "https://github.com/thorwhalen/ideadump/commit/f64944f128858fc3fee157acf5fb1a426834cccc",
+    "remote_url": "https://github.com/addaix/ideadump",
+    "commit_url": "https://github.com/addaix/ideadump/commit/2d1a3e7ea50bc1aac8e0f441e35794c26cda02af",
     "error": null
   },
   "ci": {
     "provider": "github",
-    "repository": "thorwhalen/ideadump",
-    "sha": "f64944f128858fc3fee157acf5fb1a426834cccc",
+    "repository": "addaix/ideadump",
+    "sha": "2d1a3e7ea50bc1aac8e0f441e35794c26cda02af",
     "sha_in_history": true,
     "ref": "refs/heads/main",
     "ref_name": "main",
-    "run_id": "43644894015",
-    "run_url": "https://github.com/thorwhalen/ideadump/actions/runs/43644894015",
+    "run_id": "44920912399",
+    "run_url": "https://github.com/addaix/ideadump/actions/runs/44920912399",
     "server_url": "https://github.com"
   },
   "tools": {
@@ -61,15 +61,13 @@
   "pypi": {
     "checked": true,
     "latest": "0.0.2",
-    "relation": "behind",
+    "relation": "same",
     "error": null
   },
-  "reproduce": "git clone https://github.com/thorwhalen/ideadump && cd ideadump\ngit checkout f64944f128858fc3fee157acf5fb1a426834cccc\npip install \"epythet==0.2.22\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/addaix/ideadump && cd ideadump\ngit checkout 2d1a3e7ea50bc1aac8e0f441e35794c26cda02af\npip install \"epythet==0.2.22\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
-    "aligned": false,
-    "notes": [
-      "The documented version (0.0.1) is behind the latest release on PyPI (0.0.2): `pip install ideadump` gives newer code than these docs describe."
-    ]
+    "aligned": true,
+    "notes": []
   }
 }

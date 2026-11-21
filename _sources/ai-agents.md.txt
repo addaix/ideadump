@@ -16,10 +16,10 @@ Skills are folders holding a `SKILL.md` (the [Agent Skills](https://agentskills.
 Capture an idea the owner tells you, in their own words, research it a little (more if it looks promising), tag and link it, and find it again later, with the ideadump command. Use whenever the owner shares an idea unrelated to the current task or asks you to keep one ("I have an idea", "idea:", "jot this down", "dump this idea", "note this idea for later", "remind me of this idea"), asks about their ideas ("what ideas do I have about X", "list my ideas", "show the idea about Y", "research that idea deeper", "that one is promising", "park that idea"), or asks whether anything they have been working on relates to their ideas ("is any of my recent work related to my ideas", "anything in my ideas worth doing now"), typically during spare token budget. Ideas are stored in a local folder or a private git repository, never in the current project.
 
 ```bash
-gh skill install thorwhalen/ideadump ideadump --agent claude-code
+gh skill install addaix/ideadump ideadump --agent claude-code
 ```
 
-Source: [`ideadump/data/skills/ideadump`](https://github.com/thorwhalen/ideadump/tree/HEAD/ideadump/data/skills/ideadump) (bundled with the pip package).
+Source: [`ideadump/data/skills/ideadump`](https://github.com/addaix/ideadump/tree/HEAD/ideadump/data/skills/ideadump) (bundled with the pip package).
 
 The bundled skills are also on disk after `pip install ideadump`, under the package's `data/skills/` directory; link them into an agent without network access with `skill link-skills <that directory>`.
 
@@ -28,14 +28,14 @@ The bundled skills are also on disk after `pip install ideadump`, under the pack
 
 Files agents read before working in this repository.
 
-- [`.claude/CLAUDE.md`](https://github.com/thorwhalen/ideadump/tree/HEAD/.claude/CLAUDE.md): read by Claude Code
+- [`.claude/CLAUDE.md`](https://github.com/addaix/ideadump/tree/HEAD/.claude/CLAUDE.md): read by Claude Code
 
 
 ## Machine-readable documentation
 
 This site publishes the same documentation in forms that fit an agent's context window:
 
-- [`llms.txt`](https://thorwhalen.github.io/ideadump/llms.txt): an index of every page with a one-line description ([llms.txt](https://llmstxt.org) format)
-- [`ideadump.md`](https://thorwhalen.github.io/ideadump/ideadump.md): the whole documentation as one Markdown file
+- [`llms.txt`](https://addaix.github.io/ideadump/llms.txt): an index of every page with a one-line description ([llms.txt](https://llmstxt.org) format)
+- [`ideadump.md`](https://addaix.github.io/ideadump/ideadump.md): the whole documentation as one Markdown file
 - `<page>.html.md`: a rendered Markdown twin of every page, advertised from each page's `<head>` with `<link rel="alternate" type="text/markdown">`
-- [`objects.inv`](https://thorwhalen.github.io/ideadump/objects.inv): the Sphinx inventory: a symbol-to-URL index (`sphobjinv convert plain objects.inv -`)
+- [`objects.inv`](https://addaix.github.io/ideadump/objects.inv): the Sphinx inventory: a symbol-to-URL index (`sphobjinv convert plain objects.inv -`)

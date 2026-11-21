@@ -1,4 +1,4 @@
-> built 2026-11-14 21:51 UTC from f64944f (main) · ideadump 0.0.1. Details: build_info.json
+> built 2026-11-21 15:47 UTC from 2d1a3e7 (main) · ideadump 0.0.2. Details: build_info.json
 
 # index.html.md
 
@@ -636,31 +636,29 @@ False
 
 # About this build
 
-This documentation was built on **2026-11-14 21:51 UTC** from commit <a href="https://github.com/thorwhalen/ideadump/commit/f64944f128858fc3fee157acf5fb1a426834cccc"><code>f64944f</code></a> on branch <code>main</code>, for **ideadump 0.0.1** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-21 15:47 UTC** from commit <a href="https://github.com/addaix/ideadump/commit/2d1a3e7ea50bc1aac8e0f441e35794c26cda02af"><code>2d1a3e7</code></a> on branch <code>main</code>, for **ideadump 0.0.2** (from <code>pyproject.toml</code>).
 
-#### WARNING
-The documentation and the package may be misaligned:
-
-- The documented version (0.0.1) is behind the latest release on PyPI (0.0.2): `pip install ideadump` gives newer code than these docs describe.
+#### NOTE
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 
 ## Source
 
-|                     |                                                                                                                                                            |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/thorwhalen/ideadump/commit/f64944f128858fc3fee157acf5fb1a426834cccc"><code>f64944f128858fc3fee157acf5fb1a426834cccc</code></a> |
-| Branch              | <code>main</code>                                                                                                                                          |
-| Tags at this commit | none                                                                                                                                                       |
-| Working tree        | clean                                                                                                                                                      |
-| Remote              | <code>https://github.com/thorwhalen/ideadump</code>                                                                                                        |
+|                     |                                                                                                                                                        |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Commit              | <a href="https://github.com/addaix/ideadump/commit/2d1a3e7ea50bc1aac8e0f441e35794c26cda02af"><code>2d1a3e7ea50bc1aac8e0f441e35794c26cda02af</code></a> |
+| Branch              | <code>main</code>                                                                                                                                      |
+| Tags at this commit | none                                                                                                                                                   |
+| Working tree        | clean                                                                                                                                                  |
+| Remote              | <code>https://github.com/addaix/ideadump</code>                                                                                                        |
 
 ## Continuous integration
 
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
-| Repository   | <code>thorwhalen/ideadump</code>                                                           |
-| Run          | <a href="https://github.com/thorwhalen/ideadump/actions/runs/43644894015">43644894015</a>  |
+| Repository   | <code>addaix/ideadump</code>                                                               |
+| Run          | <a href="https://github.com/addaix/ideadump/actions/runs/44920912399">44920912399</a>      |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>f64944f128858fc3fee157acf5fb1a426834cccc</code> (in the history of the built commit) |
+| Event commit | <code>2d1a3e7ea50bc1aac8e0f441e35794c26cda02af</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -685,13 +683,13 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/ideadump/0.0.2/">0.0.2</a>, newer than the documented version (0.0.1).
+Latest release: <a href="https://pypi.org/project/ideadump/0.0.2/">0.0.2</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
-git clone https://github.com/thorwhalen/ideadump && cd ideadump
-git checkout f64944f128858fc3fee157acf5fb1a426834cccc
+git clone https://github.com/addaix/ideadump && cd ideadump
+git checkout 2d1a3e7ea50bc1aac8e0f441e35794c26cda02af
 pip install "epythet==0.2.22"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
@@ -718,10 +716,10 @@ Skills are folders holding a `SKILL.md` (the [Agent Skills](https://agentskills.
 Capture an idea the owner tells you, in their own words, research it a little (more if it looks promising), tag and link it, and find it again later, with the ideadump command. Use whenever the owner shares an idea unrelated to the current task or asks you to keep one (“I have an idea”, “idea:”, “jot this down”, “dump this idea”, “note this idea for later”, “remind me of this idea”), asks about their ideas (“what ideas do I have about X”, “list my ideas”, “show the idea about Y”, “research that idea deeper”, “that one is promising”, “park that idea”), or asks whether anything they have been working on relates to their ideas (“is any of my recent work related to my ideas”, “anything in my ideas worth doing now”), typically during spare token budget. Ideas are stored in a local folder or a private git repository, never in the current project.
 
 ```bash
-gh skill install thorwhalen/ideadump ideadump --agent claude-code
+gh skill install addaix/ideadump ideadump --agent claude-code
 ```
 
-Source: [`ideadump/data/skills/ideadump`](https://github.com/thorwhalen/ideadump/tree/HEAD/ideadump/data/skills/ideadump) (bundled with the pip package).
+Source: [`ideadump/data/skills/ideadump`](https://github.com/addaix/ideadump/tree/HEAD/ideadump/data/skills/ideadump) (bundled with the pip package).
 
 The bundled skills are also on disk after `pip install ideadump`, under the package’s `data/skills/` directory; link them into an agent without network access with `skill link-skills <that directory>`.
 
@@ -729,16 +727,16 @@ The bundled skills are also on disk after `pip install ideadump`, under the pack
 
 Files agents read before working in this repository.
 
-- [`.claude/CLAUDE.md`](https://github.com/thorwhalen/ideadump/tree/HEAD/.claude/CLAUDE.md): read by Claude Code
+- [`.claude/CLAUDE.md`](https://github.com/addaix/ideadump/tree/HEAD/.claude/CLAUDE.md): read by Claude Code
 
 ## Machine-readable documentation
 
 This site publishes the same documentation in forms that fit an agent’s context window:
 
-- [`llms.txt`](https://thorwhalen.github.io/ideadump/llms.txt): an index of every page with a one-line description ([llms.txt](https://llmstxt.org) format)
-- [`ideadump.md`](https://thorwhalen.github.io/ideadump/ideadump.md): the whole documentation as one Markdown file
+- [`llms.txt`](https://addaix.github.io/ideadump/llms.txt): an index of every page with a one-line description ([llms.txt](https://llmstxt.org) format)
+- [`ideadump.md`](https://addaix.github.io/ideadump/ideadump.md): the whole documentation as one Markdown file
 - `<page>.html.md`: a rendered Markdown twin of every page, advertised from each page’s `<head>` with `<link rel="alternate" type="text/markdown">`
-- [`objects.inv`](https://thorwhalen.github.io/ideadump/objects.inv): the Sphinx inventory: a symbol-to-URL index (`sphobjinv convert plain objects.inv -`)
+- [`objects.inv`](https://addaix.github.io/ideadump/objects.inv): the Sphinx inventory: a symbol-to-URL index (`sphobjinv convert plain objects.inv -`)
 
 
 # api.html.md

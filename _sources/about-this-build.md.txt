@@ -5,32 +5,30 @@ orphan: true
 
 # About this build
 
-This documentation was built on **2026-11-14 21:51 UTC** from commit <a href="https://github.com/thorwhalen/ideadump/commit/f64944f128858fc3fee157acf5fb1a426834cccc"><code>f64944f</code></a> on branch <code>main</code>, for **ideadump 0.0.1** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-21 15:47 UTC** from commit <a href="https://github.com/addaix/ideadump/commit/2d1a3e7ea50bc1aac8e0f441e35794c26cda02af"><code>2d1a3e7</code></a> on branch <code>main</code>, for **ideadump 0.0.2** (from <code>pyproject.toml</code>).
 
-:::{warning}
-The documentation and the package may be misaligned:
-
-- The documented version (0.0.1) is behind the latest release on PyPI (0.0.2): `pip install ideadump` gives newer code than these docs describe.
+:::{note}
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 :::
 
 ## Source
 
 | | |
 |---|---|
-| Commit | <a href="https://github.com/thorwhalen/ideadump/commit/f64944f128858fc3fee157acf5fb1a426834cccc"><code>f64944f128858fc3fee157acf5fb1a426834cccc</code></a> |
+| Commit | <a href="https://github.com/addaix/ideadump/commit/2d1a3e7ea50bc1aac8e0f441e35794c26cda02af"><code>2d1a3e7ea50bc1aac8e0f441e35794c26cda02af</code></a> |
 | Branch | <code>main</code> |
 | Tags at this commit | none |
 | Working tree | clean |
-| Remote | <code>https://github.com/thorwhalen/ideadump</code> |
+| Remote | <code>https://github.com/addaix/ideadump</code> |
 
 ## Continuous integration
 
 | | |
 |---|---|
-| Repository | <code>thorwhalen/ideadump</code> |
-| Run | <a href="https://github.com/thorwhalen/ideadump/actions/runs/43644894015">43644894015</a> |
+| Repository | <code>addaix/ideadump</code> |
+| Run | <a href="https://github.com/addaix/ideadump/actions/runs/44920912399">44920912399</a> |
 | Ref | <code>refs/heads/main</code> |
-| Event commit | <code>f64944f128858fc3fee157acf5fb1a426834cccc</code> (in the history of the built commit) |
+| Event commit | <code>2d1a3e7ea50bc1aac8e0f441e35794c26cda02af</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -55,13 +53,13 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/ideadump/0.0.2/">0.0.2</a>, newer than the documented version (0.0.1).
+Latest release: <a href="https://pypi.org/project/ideadump/0.0.2/">0.0.2</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
-git clone https://github.com/thorwhalen/ideadump && cd ideadump
-git checkout f64944f128858fc3fee157acf5fb1a426834cccc
+git clone https://github.com/addaix/ideadump && cd ideadump
+git checkout 2d1a3e7ea50bc1aac8e0f441e35794c26cda02af
 pip install "epythet==0.2.22"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
