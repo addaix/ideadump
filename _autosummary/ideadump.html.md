@@ -65,9 +65,15 @@ The data root: the argument, else `$IDEADUMP_DATA_DIR`, else the user data folde
 * **Return type:**
   [`Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path)
 
-### ideadump.find(query=None, , file=None, limit=10, files=None, data_dir=None, score=None)
+### ideadump.find(query=None, , file=None, limit=10, files=None, data_dir=None, score=None, scorer=None)
 
 Ideas related to a query, best first: a few words, or a page of text in `file`.
+
+`scorer` picks how ideas are ranked: `bm25` (the default: words, no model, no
+network), `semantic` (BM25 blended with `ir` embeddings; needs the `semantic`
+extra), `light` (the same with a model-free hashing embedder), or a model name.
+The `IDEADUMP_SCORER` environment variable sets it for every call; `score`
+(a Python callable) wins over both.
 
 For “is anything I’ve been working on related to my ideas?”, put a description of
 recent work (ledgers, issue titles, commit subjects) in a file and pass `--file`.
@@ -169,9 +175,10 @@ Where the ideas are stored, and whether that folder is synced to a git repositor
 
 ### Modules
 
-| [`base`](ideadump.base.html.md#module-ideadump.base)     | Errors and constants shared across ideadump.                                      |
-|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| [`render`](ideadump.render.html.md#module-ideadump.render) | Markdown views of the records: one `README.md` per idea and an index at the root. |
-| [`search`](ideadump.search.html.md#module-ideadump.search) | Rank ideas against a query: BM25 over words, standard library only.               |
-| [`store`](ideadump.store.html.md#module-ideadump.store)   | Where ideas live: a `MutableMapping` of `/`-separated path to text.               |
-| [`tools`](ideadump.tools.html.md#module-ideadump.tools)   | The verbs: plain functions, JSON-able arguments in, JSON-able dicts out.          |
+| [`base`](ideadump.base.html.md#module-ideadump.base)         | Errors and constants shared across ideadump.                                                                                                    |
+|------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`render`](ideadump.render.html.md#module-ideadump.render)     | Markdown views of the records: one `README.md` per idea and an index at the root.                                                               |
+| [`search`](ideadump.search.html.md#module-ideadump.search)     | Rank ideas against a query: BM25 over words, standard library only.                                                                             |
+| [`semantic`](ideadump.semantic.html.md#module-ideadump.semantic) | A semantic scorer for [`ideadump.search.rank()`](ideadump.search.html.md#ideadump.search.rank), backed by the fleet's `ir`. |
+| [`store`](ideadump.store.html.md#module-ideadump.store)       | Where ideas live: a `MutableMapping` of `/`-separated path to text.                                                                             |
+| [`tools`](ideadump.tools.html.md#module-ideadump.tools)       | The verbs: plain functions, JSON-able arguments in, JSON-able dicts out.                                                                        |

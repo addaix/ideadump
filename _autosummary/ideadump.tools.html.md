@@ -46,9 +46,15 @@ captured (a session name, “phone”). Returns the new id.
 * **Return type:**
   [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
 
-### ideadump.tools.find(query=None, , file=None, limit=10, files=None, data_dir=None, score=None)
+### ideadump.tools.find(query=None, , file=None, limit=10, files=None, data_dir=None, score=None, scorer=None)
 
 Ideas related to a query, best first: a few words, or a page of text in `file`.
+
+`scorer` picks how ideas are ranked: `bm25` (the default: words, no model, no
+network), `semantic` (BM25 blended with `ir` embeddings; needs the `semantic`
+extra), `light` (the same with a model-free hashing embedder), or a model name.
+The `IDEADUMP_SCORER` environment variable sets it for every call; `score`
+(a Python callable) wins over both.
 
 For “is anything I’ve been working on related to my ideas?”, put a description of
 recent work (ledgers, issue titles, commit subjects) in a file and pass `--file`.

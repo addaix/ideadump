@@ -38,5 +38,6 @@
    base
    render
    search
+   semantic
    store
    tools

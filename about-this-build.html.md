@@ -2,18 +2,16 @@
 
 # About this build
 
-This documentation was built on **2026-11-21 17:53 UTC** from commit <a href="https://github.com/addaix/ideadump/commit/f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3"><code>f3e053f</code></a> on branch <code>main</code>, for **ideadump 0.0.2** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-22 16:21 UTC** from commit <a href="https://github.com/addaix/ideadump/commit/c609557d97580baae55122d36b86e67a2f009031"><code>c609557</code></a> on branch <code>main</code>, for **ideadump 0.0.3** (from <code>pyproject.toml</code>).
 
-#### WARNING
-The documentation and the package may be misaligned:
-
-- The documented version (0.0.2) is behind the latest release on PyPI (0.0.3): `pip install ideadump` gives newer code than these docs describe.
+#### NOTE
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 
 ## Source
 
 |                     |                                                                                                                                                        |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/addaix/ideadump/commit/f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3"><code>f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3</code></a> |
+| Commit              | <a href="https://github.com/addaix/ideadump/commit/c609557d97580baae55122d36b86e67a2f009031"><code>c609557d97580baae55122d36b86e67a2f009031</code></a> |
 | Branch              | <code>main</code>                                                                                                                                      |
 | Tags at this commit | none                                                                                                                                                   |
 | Working tree        | clean                                                                                                                                                  |
@@ -24,9 +22,9 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>addaix/ideadump</code>                                                               |
-| Run          | <a href="https://github.com/addaix/ideadump/actions/runs/44932402778">44932402778</a>      |
+| Run          | <a href="https://github.com/addaix/ideadump/actions/runs/45043204073">45043204073</a>      |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3</code> (in the history of the built commit) |
+| Event commit | <code>c609557d97580baae55122d36b86e67a2f009031</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -51,13 +49,13 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/ideadump/0.0.3/">0.0.3</a>, newer than the documented version (0.0.2).
+Latest release: <a href="https://pypi.org/project/ideadump/0.0.3/">0.0.3</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/addaix/ideadump && cd ideadump
-git checkout f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3
+git checkout c609557d97580baae55122d36b86e67a2f009031
 pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

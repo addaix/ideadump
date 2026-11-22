@@ -1,0 +1,20 @@
+ideadump.semantic
+=================
+
+.. automodule:: ideadump.semantic
+
+   
+   .. rubric:: Module Attributes
+
+   .. autosummary::
+   
+      SCORER_ENV_VAR
+      SCORER_NAMES
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      hybrid_scorer
+      resolve_scorer
+   

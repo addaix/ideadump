@@ -9,6 +9,7 @@
 - [ideadump.base](ideadump.base.html.md): Errors and constants shared across ideadump.
 - [ideadump.render](ideadump.render.html.md): Markdown views of the records: one &#96;README.md&#96; per idea and an index at the root.
 - [ideadump.search](ideadump.search.html.md): Rank ideas against a query: BM25 over words, standard library only.
+- [ideadump.semantic](ideadump.semantic.html.md): A semantic scorer for &#96;ideadump.search.rank()&#96;, backed by the fleet’s &#96;ir&#96;.
 - [ideadump.store](ideadump.store.html.md): Where ideas live: a &#96;MutableMapping&#96; of &#96;/&#96;-separated path to text.
 - [ideadump.tools](ideadump.tools.html.md): The verbs: plain functions, JSON-able arguments in, JSON-able dicts out.
 

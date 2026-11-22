@@ -69,6 +69,7 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l3"><a class="reference internal" href="_autosummary/ideadump.base.html">ideadump.base</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_autosummary/ideadump.render.html">ideadump.render</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_autosummary/ideadump.search.html">ideadump.search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/ideadump.semantic.html">ideadump.semantic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_autosummary/ideadump.store.html">ideadump.store</a></li>
 <li class="toctree-l3"><a class="reference internal" href="_autosummary/ideadump.tools.html">ideadump.tools</a></li>
 </ul>
@@ -171,7 +172,7 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="6"><span class="n">find</span><span class="p">(</span><span class="s2">"speech recognition"</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)[</span><span class="s2">"hits"</span><span class="p">]</span>
 </span></pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">find</span></code> ranks with BM25 (standard library); pass <code class="docutils literal notranslate"><span class="pre">score=</span></code> to plug in another scorer, such as a semantic one.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find</span></code> ranks with BM25 (standard library: no model, no network) by default. For ideas that share meaning but not words, install the <code class="docutils literal notranslate"><span class="pre">semantic</span></code> extra (it brings the fleet’s <code class="docutils literal notranslate"><span class="pre">ir</span></code>) and pass <code class="docutils literal notranslate"><span class="pre">--scorer</span> <span class="pre">semantic</span></code> (BM25 blended with embedding similarity), or set <code class="docutils literal notranslate"><span class="pre">IDEADUMP_SCORER=semantic</span></code> for every call; <code class="docutils literal notranslate"><span class="pre">--scorer</span> <span class="pre">light</span></code> uses a model-free hashing embedder, and any other value is taken as a sentence-transformers model name. From Python, <code class="docutils literal notranslate"><span class="pre">find(...,</span> <span class="pre">score=...)</span></code> takes any <code class="docutils literal notranslate"><span class="pre">score(query,</span> <span class="pre">docs)</span> <span class="pre">-&gt;</span> <span class="pre">list[float]</span></code>.</p>
 </section>
 <section id="agent-skill">
 <h2>Agent skill<a class="headerlink" href="#agent-skill" title="Link to this heading">#</a></h2>
@@ -186,7 +187,7 @@ data-aria-dark="Switch to auto color mode">
 </section>
 </section>
 
-<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-21 17:53 UTC from <a href="https://github.com/addaix/ideadump/commit/f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3">f3e053f</a> (main) · ideadump 0.0.2 · <a href="about-this-build.html">about this build</a></p>
+<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-22 16:21 UTC from <a href="https://github.com/addaix/ideadump/commit/c609557d97580baae55122d36b86e67a2f009031">c609557</a> (main) · ideadump 0.0.3 · <a href="about-this-build.html">about this build</a></p>
         </article><button class="back-to-top" type="button">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
@@ -221,7 +222,7 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </footer>
-      <script src="_static/documentation_options.js?v=e3a6060d"></script>
+      <script src="_static/documentation_options.js?v=47de8214"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>

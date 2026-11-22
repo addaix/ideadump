@@ -1,4 +1,4 @@
-> built 2026-11-21 17:53 UTC from f3e053f (main) · ideadump 0.0.2. Details: build_info.json
+> built 2026-11-22 16:21 UTC from c609557 (main) · ideadump 0.0.3. Details: build_info.json
 
 # index.html.md
 
@@ -65,7 +65,7 @@ note(r["id"], text="# Prior art\n\nWhisper.cpp, Vosk.", files=files)
 find("speech recognition", files=files)["hits"]
 ```
 
-`find` ranks with BM25 (standard library); pass `score=` to plug in another scorer, such as a semantic one.
+`find` ranks with BM25 (standard library: no model, no network) by default. For ideas that share meaning but not words, install the `semantic` extra (it brings the fleet’s `ir`) and pass `--scorer semantic` (BM25 blended with embedding similarity), or set `IDEADUMP_SCORER=semantic` for every call; `--scorer light` uses a model-free hashing embedder, and any other value is taken as a sentence-transformers model name. From Python, `find(..., score=...)` takes any `score(query, docs) -> list[float]`.
 
 ## Agent skill
 
@@ -205,9 +205,15 @@ The data root: the argument, else `$IDEADUMP_DATA_DIR`, else the user data folde
 * **Return type:**
   [`Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path)
 
-### ideadump.find(query=None, , file=None, limit=10, files=None, data_dir=None, score=None)
+### ideadump.find(query=None, , file=None, limit=10, files=None, data_dir=None, score=None, scorer=None)
 
 Ideas related to a query, best first: a few words, or a page of text in `file`.
+
+`scorer` picks how ideas are ranked: `bm25` (the default: words, no model, no
+network), `semantic` (BM25 blended with `ir` embeddings; needs the `semantic`
+extra), `light` (the same with a model-free hashing embedder), or a model name.
+The `IDEADUMP_SCORER` environment variable sets it for every call; `score`
+(a Python callable) wins over both.
 
 For “is anything I’ve been working on related to my ideas?”, put a description of
 recent work (ledgers, issue titles, commit subjects) in a file and pass `--file`.
@@ -309,12 +315,13 @@ Where the ideas are stored, and whether that folder is synced to a git repositor
 
 ### Modules
 
-| [`base`](_autosummary/ideadump.base.html.md#module-ideadump.base)     | Errors and constants shared across ideadump.                                      |
-|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| [`render`](_autosummary/ideadump.render.html.md#module-ideadump.render) | Markdown views of the records: one `README.md` per idea and an index at the root. |
-| [`search`](_autosummary/ideadump.search.html.md#module-ideadump.search) | Rank ideas against a query: BM25 over words, standard library only.               |
-| [`store`](_autosummary/ideadump.store.html.md#module-ideadump.store)   | Where ideas live: a `MutableMapping` of `/`-separated path to text.               |
-| [`tools`](_autosummary/ideadump.tools.html.md#module-ideadump.tools)   | The verbs: plain functions, JSON-able arguments in, JSON-able dicts out.          |
+| [`base`](_autosummary/ideadump.base.html.md#module-ideadump.base)         | Errors and constants shared across ideadump.                                                                                                    |
+|------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`render`](_autosummary/ideadump.render.html.md#module-ideadump.render)     | Markdown views of the records: one `README.md` per idea and an index at the root.                                                               |
+| [`search`](_autosummary/ideadump.search.html.md#module-ideadump.search)     | Rank ideas against a query: BM25 over words, standard library only.                                                                             |
+| [`semantic`](_autosummary/ideadump.semantic.html.md#module-ideadump.semantic) | A semantic scorer for [`ideadump.search.rank()`](_autosummary/ideadump.search.html.md#ideadump.search.rank), backed by the fleet's `ir`. |
+| [`store`](_autosummary/ideadump.store.html.md#module-ideadump.store)       | Where ideas live: a `MutableMapping` of `/`-separated path to text.                                                                             |
+| [`tools`](_autosummary/ideadump.tools.html.md#module-ideadump.tools)       | The verbs: plain functions, JSON-able arguments in, JSON-able dicts out.                                                                        |
 
 
 # _autosummary/ideadump.render.html.md
@@ -432,6 +439,77 @@ Lowercased content words of `text`, with a light plural fold.
 
 * **Return type:**
   [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`str`](https://docs.python.org/3/builtins/stdtypes.html#str)]
+
+
+# _autosummary/ideadump.semantic.html.md
+
+# ideadump.semantic
+
+A semantic scorer for [`ideadump.search.rank()`](_autosummary/ideadump.search.html.md#ideadump.search.rank), backed by the fleet’s `ir`.
+
+BM25 (the default, standard library, no network, no model) misses ideas that share
+meaning but not words. [`hybrid_scorer()`](_autosummary/ideadump.semantic.html.md#ideadump.semantic.hybrid_scorer) adds embedding similarity from `ir`’s
+embedders, blended with BM25 so an exact word match still counts. It needs the
+`semantic` extra (`ir`); with the `"light"` embedder it needs no model download
+(a numpy hashing embedder, lexical in spirit), while the default is a local
+sentence-transformers model.
+
+```pycon
+>>> scorer = hybrid_scorer("light")
+>>> scores = scorer("offline speech to text", ["speech to text on a phone", "bread recipe"])
+>>> scores[0] > scores[1]
+True
+```
+
+[`resolve_scorer()`](_autosummary/ideadump.semantic.html.md#ideadump.semantic.resolve_scorer) maps the names a command line or environment variable can carry
+(`"bm25"`, `"semantic"`, `"light"`, or any sentence-transformers model name) to a
+scorer, so the CLI needs no code of its own.
+
+### Module Attributes
+
+| [`SCORER_ENV_VAR`](_autosummary/ideadump.semantic.html.md#ideadump.semantic.SCORER_ENV_VAR)   | The environment variable that selects the scorer when none is passed.                     |
+|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| [`SCORER_NAMES`](_autosummary/ideadump.semantic.html.md#ideadump.semantic.SCORER_NAMES)     | Names with a fixed meaning; any other string is taken as an `ir` embedder (a model name). |
+
+### Functions
+
+| [`hybrid_scorer`](_autosummary/ideadump.semantic.html.md#ideadump.semantic.hybrid_scorer)([embedder, weight, cosine_floor])   | A `score(query, docs)` blending BM25 with `ir`-embedding cosine similarity.   |
+|----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| [`resolve_scorer`](_autosummary/ideadump.semantic.html.md#ideadump.semantic.resolve_scorer)([name])                            | The scorer for `name`, or `None` for the BM25 default.                        |
+
+### ideadump.semantic.SCORER_ENV_VAR *= 'IDEADUMP_SCORER'*
+
+The environment variable that selects the scorer when none is passed.
+
+### ideadump.semantic.SCORER_NAMES *= ('bm25', 'semantic', 'light')*
+
+Names with a fixed meaning; any other string is taken as an `ir` embedder (a model name).
+
+### ideadump.semantic.hybrid_scorer(embedder='default', , weight=0.5, cosine_floor=0.2)
+
+A `score(query, docs)` blending BM25 with `ir`-embedding cosine similarity.
+
+* **Parameters:**
+  * **embedder** – an `ir` embedder spec: `"default"` (local model),
+    `"light"` (hashing, no download), or a model name.
+  * **weight** ([`float`](https://docs.python.org/3/builtins/functions.html#float)) – share of the embedding score in the blend, in `[0, 1]`.
+  * **cosine_floor** ([`float`](https://docs.python.org/3/builtins/functions.html#float)) – cosine below which a document counts as unrelated.
+* **Raises:**
+  [**IdeadumpError**](_autosummary/ideadump.html.md#ideadump.IdeadumpError) – if `ir` (the `semantic` extra) is not installed.
+* **Return type:**
+  [`Callable`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable)[[[`str`](https://docs.python.org/3/builtins/stdtypes.html#str), [`Sequence`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence)[[`str`](https://docs.python.org/3/builtins/stdtypes.html#str)]], [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`float`](https://docs.python.org/3/builtins/functions.html#float)]]
+
+### ideadump.semantic.resolve_scorer(name=None)
+
+The scorer for `name`, or `None` for the BM25 default.
+
+`name` falls back to the [`SCORER_ENV_VAR`](_autosummary/ideadump.semantic.html.md#ideadump.semantic.SCORER_ENV_VAR) environment variable, then to
+`"bm25"`. `"semantic"` is the hybrid with `ir`’s default local model,
+`"light"` the hybrid with the hashing embedder, and any other string the hybrid
+with that embedder (a model name).
+
+* **Return type:**
+  [`Callable`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable) | [`None`](https://docs.python.org/3/builtins/constants.html#None)
 
 
 # _autosummary/ideadump.store.html.md
@@ -552,9 +630,15 @@ captured (a session name, “phone”). Returns the new id.
 * **Return type:**
   [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
 
-### ideadump.tools.find(query=None, , file=None, limit=10, files=None, data_dir=None, score=None)
+### ideadump.tools.find(query=None, , file=None, limit=10, files=None, data_dir=None, score=None, scorer=None)
 
 Ideas related to a query, best first: a few words, or a page of text in `file`.
+
+`scorer` picks how ideas are ranked: `bm25` (the default: words, no model, no
+network), `semantic` (BM25 blended with `ir` embeddings; needs the `semantic`
+extra), `light` (the same with a model-free hashing embedder), or a model name.
+The `IDEADUMP_SCORER` environment variable sets it for every call; `score`
+(a Python callable) wins over both.
 
 For “is anything I’ve been working on related to my ideas?”, put a description of
 recent work (ledgers, issue titles, commit subjects) in a file and pass `--file`.
@@ -636,18 +720,16 @@ False
 
 # About this build
 
-This documentation was built on **2026-11-21 17:53 UTC** from commit <a href="https://github.com/addaix/ideadump/commit/f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3"><code>f3e053f</code></a> on branch <code>main</code>, for **ideadump 0.0.2** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-22 16:21 UTC** from commit <a href="https://github.com/addaix/ideadump/commit/c609557d97580baae55122d36b86e67a2f009031"><code>c609557</code></a> on branch <code>main</code>, for **ideadump 0.0.3** (from <code>pyproject.toml</code>).
 
-#### WARNING
-The documentation and the package may be misaligned:
-
-- The documented version (0.0.2) is behind the latest release on PyPI (0.0.3): `pip install ideadump` gives newer code than these docs describe.
+#### NOTE
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 
 ## Source
 
 |                     |                                                                                                                                                        |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/addaix/ideadump/commit/f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3"><code>f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3</code></a> |
+| Commit              | <a href="https://github.com/addaix/ideadump/commit/c609557d97580baae55122d36b86e67a2f009031"><code>c609557d97580baae55122d36b86e67a2f009031</code></a> |
 | Branch              | <code>main</code>                                                                                                                                      |
 | Tags at this commit | none                                                                                                                                                   |
 | Working tree        | clean                                                                                                                                                  |
@@ -658,9 +740,9 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>addaix/ideadump</code>                                                               |
-| Run          | <a href="https://github.com/addaix/ideadump/actions/runs/44932402778">44932402778</a>      |
+| Run          | <a href="https://github.com/addaix/ideadump/actions/runs/45043204073">45043204073</a>      |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3</code> (in the history of the built commit) |
+| Event commit | <code>c609557d97580baae55122d36b86e67a2f009031</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -685,13 +767,13 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/ideadump/0.0.3/">0.0.3</a>, newer than the documented version (0.0.2).
+Latest release: <a href="https://pypi.org/project/ideadump/0.0.3/">0.0.3</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/addaix/ideadump && cd ideadump
-git checkout f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3
+git checkout c609557d97580baae55122d36b86e67a2f009031
 pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

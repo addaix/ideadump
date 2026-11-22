@@ -1,32 +1,32 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-21T17:53:50Z",
+  "built_at": "2026-11-22T16:21:06Z",
   "package": {
     "name": "ideadump",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "display_name": "ideadump",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3",
-    "short_commit": "f3e053f",
+    "commit": "c609557d97580baae55122d36b86e67a2f009031",
+    "short_commit": "c609557",
     "branch": "main",
     "tags": [],
     "dirty": false,
     "remote_url": "https://github.com/addaix/ideadump",
-    "commit_url": "https://github.com/addaix/ideadump/commit/f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3",
+    "commit_url": "https://github.com/addaix/ideadump/commit/c609557d97580baae55122d36b86e67a2f009031",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "addaix/ideadump",
-    "sha": "f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3",
+    "sha": "c609557d97580baae55122d36b86e67a2f009031",
     "sha_in_history": true,
     "ref": "refs/heads/main",
     "ref_name": "main",
-    "run_id": "44932402778",
-    "run_url": "https://github.com/addaix/ideadump/actions/runs/44932402778",
+    "run_id": "45043204073",
+    "run_url": "https://github.com/addaix/ideadump/actions/runs/45043204073",
     "server_url": "https://github.com"
   },
   "tools": {
@@ -55,21 +55,19 @@
     "docs_dir": "docsrc"
   },
   "site": {
-    "modules_documented": 6,
-    "objects_documented": 40
+    "modules_documented": 7,
+    "objects_documented": 44
   },
   "pypi": {
     "checked": true,
     "latest": "0.0.3",
-    "relation": "behind",
+    "relation": "same",
     "error": null
   },
-  "reproduce": "git clone https://github.com/addaix/ideadump && cd ideadump\ngit checkout f3e053fdbea3f4e42a95f90a4f49b6ba5d698fc3\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/addaix/ideadump && cd ideadump\ngit checkout c609557d97580baae55122d36b86e67a2f009031\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
-    "aligned": false,
-    "notes": [
-      "The documented version (0.0.2) is behind the latest release on PyPI (0.0.3): `pip install ideadump` gives newer code than these docs describe."
-    ]
+    "aligned": true,
+    "notes": []
   }
 }
