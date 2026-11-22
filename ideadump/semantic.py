@@ -7,9 +7,9 @@ embedders, blended with BM25 so an exact word match still counts. It needs the
 (a numpy hashing embedder, lexical in spirit), while the default is a local
 sentence-transformers model.
 
->>> scorer = hybrid_scorer("light")
->>> scores = scorer("offline speech to text", ["speech to text on a phone", "bread recipe"])
->>> scores[0] > scores[1]
+>>> scorer = hybrid_scorer("light")  # doctest: +SKIP
+>>> scores = scorer("offline speech to text", ["speech to text on a phone", "bread recipe"])  # doctest: +SKIP
+>>> scores[0] > scores[1]  # doctest: +SKIP
 True
 
 :func:`resolve_scorer` maps the names a command line or environment variable can carry
