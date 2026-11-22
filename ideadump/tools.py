@@ -41,6 +41,7 @@ from ideadump.base import (
 )
 from ideadump.render import created_at, idea_page, index_page, research_depth
 from ideadump.search import rank
+from ideadump.semantic import resolve_scorer
 from ideadump.store import data_dir as _data_dir
 from ideadump.store import enclosing_work_tree, resolve_files, writing
 from ideadump.sync import sync, sync_init, sync_status
@@ -404,8 +405,15 @@ def find(
     files: Files | None = None,
     data_dir: Any = None,
     score: Callable | None = None,
+    scorer: str | None = None,
 ) -> dict:
     """Ideas related to a query, best first: a few words, or a page of text in ``file``.
+
+    ``scorer`` picks how ideas are ranked: ``bm25`` (the default: words, no model, no
+    network), ``semantic`` (BM25 blended with ``ir`` embeddings; needs the ``semantic``
+    extra), ``light`` (the same with a model-free hashing embedder), or a model name.
+    The ``IDEADUMP_SCORER`` environment variable sets it for every call; ``score``
+    (a Python callable) wins over both.
 
     For "is anything I've been working on related to my ideas?", put a description of
     recent work (ledgers, issue titles, commit subjects) in a file and pass ``--file``.
@@ -420,6 +428,7 @@ def find(
     files = resolve_files(files, data_dir_=data_dir)
     records = _records(files)
     docs = {i: _searchable(r, files) for i, r in records.items()}
+    score = score or resolve_scorer(scorer)
     hits = rank(text, docs, limit=limit, **({"score": score} if score else {}))
     for hit in hits:
         record = records[hit["id"]]
@@ -429,7 +438,7 @@ def find(
             tags=record.get("tags", []),
         )
     lines = [
-        f"{h['score']:>6}  {_line(records[h['id']])}\n        shares: {', '.join(h['terms'])}"
+        f"{h['score']:>6}  {_line(records[h['id']])}\n        shares: {', '.join(h['terms']) or '(meaning, no shared words)'}"
         for h in hits
     ]
     return {"hits": hits, "text": "\n".join(lines) or "no related ideas"}
