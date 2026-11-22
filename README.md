@@ -59,7 +59,7 @@ note(r["id"], text="# Prior art\n\nWhisper.cpp, Vosk.", files=files)
 find("speech recognition", files=files)["hits"]
 ```
 
-`find` ranks with BM25 (standard library); pass `score=` to plug in another scorer, such as a semantic one.
+`find` ranks with BM25 (standard library: no model, no network) by default. For ideas that share meaning but not words, install the `semantic` extra (it brings the fleet's `ir`) and pass `--scorer semantic` (BM25 blended with embedding similarity), or set `IDEADUMP_SCORER=semantic` for every call; `--scorer light` uses a model-free hashing embedder, and any other value is taken as a sentence-transformers model name. From Python, `find(..., score=...)` takes any `score(query, docs) -> list[float]`.
 
 ## Agent skill
 
