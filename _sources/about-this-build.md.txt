@@ -5,7 +5,7 @@ orphan: true
 
 # About this build
 
-This documentation was built on **2026-11-22 16:21 UTC** from commit <a href="https://github.com/addaix/ideadump/commit/c609557d97580baae55122d36b86e67a2f009031"><code>c609557</code></a> on branch <code>main</code>, for **ideadump 0.0.3** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-23 06:40 UTC** from commit <a href="https://github.com/addaix/ideadump/commit/edac9ffd625f9f613ebcfdc4fdd2dd6bc4afb3f6"><code>edac9ff</code></a> on branch <code>main</code>, for **ideadump 0.0.4** (from <code>pyproject.toml</code>).
 
 :::{note}
 Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
@@ -15,7 +15,7 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 | | |
 |---|---|
-| Commit | <a href="https://github.com/addaix/ideadump/commit/c609557d97580baae55122d36b86e67a2f009031"><code>c609557d97580baae55122d36b86e67a2f009031</code></a> |
+| Commit | <a href="https://github.com/addaix/ideadump/commit/edac9ffd625f9f613ebcfdc4fdd2dd6bc4afb3f6"><code>edac9ffd625f9f613ebcfdc4fdd2dd6bc4afb3f6</code></a> |
 | Branch | <code>main</code> |
 | Tags at this commit | none |
 | Working tree | clean |
@@ -26,9 +26,9 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 | | |
 |---|---|
 | Repository | <code>addaix/ideadump</code> |
-| Run | <a href="https://github.com/addaix/ideadump/actions/runs/45043204073">45043204073</a> |
+| Run | <a href="https://github.com/addaix/ideadump/actions/runs/45125531616">45125531616</a> |
 | Ref | <code>refs/heads/main</code> |
-| Event commit | <code>c609557d97580baae55122d36b86e67a2f009031</code> (in the history of the built commit) |
+| Event commit | <code>edac9ffd625f9f613ebcfdc4fdd2dd6bc4afb3f6</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -53,13 +53,13 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/ideadump/0.0.3/">0.0.3</a>, the same as the documented version.
+Latest release: <a href="https://pypi.org/project/ideadump/0.0.4/">0.0.4</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/addaix/ideadump && cd ideadump
-git checkout c609557d97580baae55122d36b86e67a2f009031
+git checkout edac9ffd625f9f613ebcfdc4fdd2dd6bc4afb3f6
 pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
